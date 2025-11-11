@@ -1,0 +1,19 @@
+# Configuração global
+global:
+  scrape_interval: 15s # Raspa os alvos a cada 15 segundos
+
+# Lista de trabalhos (jobs) para o Prometheus raspar
+scrape_configs:
+  # Job 1: O "Hello World" - Fazer o Prometheus raspar ele mesmo
+  - job_name: "prometheus"
+    static_configs:
+      - targets: ["localhost:9090"]
+
+  # Job 2: Adicionar o Keycloak (Exemplo)
+  # O Keycloak expõe métricas no path /metrics
+  - job_name: "keycloak"
+    metrics_path: /metrics
+    static_configs:
+      # Usamos 'keycloak:8080' porque é o nome do serviço
+      # e a porta DE DENTRO do Docker
+      - targets: ["keycloak:8080"]
