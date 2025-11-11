@@ -1,6 +1,9 @@
 spring:
   application:
     name: drivers-hub-services
+  liquibase:
+    enabled: false
+    change-log: "classpath:db/changelog/db.changelog.sql"
 
 management:
   endpoints:
@@ -11,3 +14,8 @@ management:
     metrics:
       export:
         enabled: true
+logging:
+  level:
+    org.springframework.web: INFO
+    org.hibernate.SQL: DEBUG
+    org.springframework.boot.context.config: DEBUG
