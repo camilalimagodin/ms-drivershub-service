@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: drivers-hub-services-dev
+  datasource:
+    url: jdbc:postgresql://localhost:5432/drivershub-database
+    username: drivershub
+    password:
+    driver-class-name: org.postgresql.Driver
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus.metrics
+  prometheus:
+    metrics:
+      export:
+        enabled: true
